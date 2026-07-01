@@ -1,17 +1,10 @@
-#!/bin/sh
-# Gradle wrapper script
-APP_NAME="Gradle"
-GRADLE_VERSION="8.7"
-DIST_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+#!/usr/bin/env bash
+# Flutter-style wrapper stub - delegates to wrapper jar if available
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WRAPPER_JAR="$HOME/.gradle/wrapper/gradle-wrapper.jar"
-WRAPPER_PROPS="android/gradle/wrapper/gradle-wrapper.properties"
-
-if [ ! -f "$WRAPPER_JAR" ]; then
-    mkdir -p "$HOME/.gradle/wrapper"
-    echo "Downloading Gradle wrapper..."
-    curl -sL "$DIST_URL" -o /tmp/gradle.zip || curl -sL "$DIST_URL" -o /tmp/gradle.zip
-    unzip -q /tmp/gradle.zip -d "$HOME/.gradle/wrapper/" || true
-    mv "$HOME/.gradle/wrapper/gradle-${GRADLE_VERSION}" "$HOME/.gradle/wrapper/gradle-${GRADLE_VERSION}" 2>/dev/null || true
+if [ -f "$WRAPPER_JAR" ]; then
+  java -jar "$WRAPPER_JAR" "$@"
+else
+  echo "Gradle wrapper jar not found at $WRAPPER_JAR"
+  exit 1
 fi
-
-exec java -jar "$WRAPPER_JAR" "$@"

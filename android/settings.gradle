@@ -1,4 +1,2 @@
-setBinding(new Binding([gradle: this]))
-evaluate(new File(getParentFile(), 'build.gradle.kts'))
-rootProject.name = "hermes_a11ygo"
-include(":app")
+rootProject.name = 'hermes_a11ygo'
+include(':app')
