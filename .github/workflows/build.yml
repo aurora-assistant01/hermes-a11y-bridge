@@ -12,9 +12,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - run: chmod +x android/gradlew || true
-      - run: ./android/gradlew -p android assembleDebug
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.24.0
+          channel: stable
+      - run: flutter pub get
+      - run: flutter build apk --debug
       - uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
