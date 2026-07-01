@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">HermesA11yGo</string>
-  <string name="a11y_desc">Hermes accessibility bridge</string>
+    <string name="app_name">Hermes A11y Bridge</string>
 </resources>
